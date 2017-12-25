@@ -1,32 +1,62 @@
+jpcoin (jpc) is a cryptocurrency.
 
-JPcoin development tree
-
-JPcoin is a PoS-based cryptocurrency.
-
-Development process
+Installation
 ===========================
 
-Developers work in their own trees, then submit pull requests when
-they think their feature or bug fix is ready.
+1) Update your Ubuntu 16.04 machine.
 
-The patch will be accepted if there is broad consensus that it is a
-good thing.  Developers should expect to rework and resubmit patches
-if they don't match the project's coding conventions (see coding.txt)
-or are controversial.
+sudo apt-get update
 
-The master branch is regularly built and tested, but is not guaranteed
-to be completely stable. Tags are regularly created to indicate new
-stable release versions of JPcoin.
+sudo apt-get upgrade
 
-Feature branches are created when there are major new features being
-worked on by several people.
+2) Install the dependencies to compile from source code.
 
-From time to time a pull request will become outdated. If this occurs, and
-the pull is no longer automatically mergeable; a comment on the pull will
-be used to issue a warning of closure. The pull will be closed 15 days
-after the warning if action is not taken by the author. Pull requests closed
-in this manner will have their corresponding issue labeled 'stagnant'.
+sudo apt-get install build-essential libssl-dev libdb++-dev git libssl1.0.0-dbg libdb-dev libboost-all-dev libminiupnpc-dev libevent-dev libcrypto++-dev libgmp3-dev 
 
-Issues with no commits will be given a similar warning, and closed after
-15 days from their last activity. Issues closed in this manner will be 
-labeled 'stale'.
+3) Create a directory for the source code.
+
+mkdir jpcoin
+cd jpcoin 
+
+4) Download source code from repository.
+
+git clone https://github.com/rohanjha1992/jpcoin.git
+
+5) Go to the src directory of your coin.
+
+cd jpcoin/src
+
+6)  Make build_detect_platform is executable.
+
+chmod +x leveldb/build_detect_platform
+
+7) Execute the following command to compile the daemon.
+
+make -f makefile.unix RELEASE=1
+
+8) Run the Coin Server using ./jpcoind command
+
+You will see message to create username and password
+
+9) Create a new configuration file.
+sudo nano /root/.jpcoin/jpcoin.conf
+
+10) Paste the following lines in jpcoin.conf file and save it.
+
+rpcuser=rpc_jpcoin
+
+rpcpassword=yourrandompassword
+
+rpcallowip=127.0.0.1
+
+listen=1
+
+server=1
+
+txindex=1
+
+daemon=1
+
+11) Run the Coin Server using ./jpcoind command
+
+List of API call list can be found here : https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
