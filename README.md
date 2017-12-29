@@ -55,4 +55,8 @@ daemon=1
 
 10) Run the Coin Server using ./jpcoind command
 
+RPC port : 27036
+P2P port : 27035
+
+
 List of API call list can be found here : https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
